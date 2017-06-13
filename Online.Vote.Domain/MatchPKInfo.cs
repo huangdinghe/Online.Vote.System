@@ -15,22 +15,22 @@ namespace Online.Vote.Domain
     public class MatchPKInfo : EntityBase
     {
         /// <summary>
-        /// MatchId
+        /// MatchId 外键映射 外键映射用BelongTo
         /// </summary>
-        [Property("MatchId")]
-        public virtual int MatchId { get; set; }
+        [BelongsTo("MatchId")]
+        public Match MatchId { get; set; }
 
         /// <summary>
-        /// FirstPlayerId
+        /// FirstPlayerId 外键映射
         /// </summary>
-        [Property("FirstPlayerID")]
-        public virtual int FirstPlayerId{ get; set; }
+        [BelongsTo("PlayerId")]
+        public Player FirstPlayerId{ get; set; }
 
         /// <summary>
-        /// SecondPlayerId
+        /// SecondPlayerId 外键映射
         /// </summary>
-        [Property("SecondPlayerId")]
-        public virtual int SecondPlayerId { get; set; }
+        [BelongsTo("PlayerId")]
+        public Player SecondPlayerId { get; set; }
 
         /// <summary>
         /// FirstSongName
@@ -64,9 +64,8 @@ namespace Online.Vote.Domain
         /// <summary>
         /// 选手1 分数
         /// </summary>
-        [Property(NotNull = true, Length = 20)]
+        [Property(NotNull = true)]
         [Required(ErrorMessage = "不能为空")]
-        [StringLength(20, ErrorMessage = "不能超过20个字符")]
         [Display(Name = "选手1分数")]
         public virtual decimal FirstPlayerScore { get; set; }
 
@@ -84,6 +83,6 @@ namespace Online.Vote.Domain
         /// </summary>
         public short Flag { get; set; }
 
-
+     
     }
 }

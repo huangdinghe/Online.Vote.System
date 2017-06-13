@@ -65,5 +65,8 @@ namespace Online.Vote.Domain
         [StringLength(20, ErrorMessage = "不能超过20个字符")]
         [Display(Name = "主持人")]
         public virtual string Hostess { get; set; }
+
+        
+
     }
 }

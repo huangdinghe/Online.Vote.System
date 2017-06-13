@@ -33,23 +33,15 @@ namespace Online.Vote.Domain
         /// <summary>
         /// 选手照片
         /// </summary>
-        [Property(NotNull = true, Length = 20)]
+        [Property(NotNull = true, Length = 200)]
         [Required(ErrorMessage = "不能为空")]
-        [StringLength(20, ErrorMessage = "不能超过20个字符")]
+        [StringLength(200, ErrorMessage = "不能超过20个字符")]
         [Display(Name = "选手照片")]
         public virtual string PlayerImage { get; set; }
 
-        /// <summary>
-        /// Player与Match多对多映射
-        /// </summary>
-       
-        [HasAndBelongsToMany(typeof(Match), Table = "Match",
-           ColumnKey = "PlayerId",
-           ColumnRef = "MatchId",
-           Cascade = ManyRelationCascadeEnum.None,
-           Inverse = false,
-           Lazy = true)]
-        public virtual IList<Match> MatchList { get; set; }
+      
+
+
 
     }
 }
