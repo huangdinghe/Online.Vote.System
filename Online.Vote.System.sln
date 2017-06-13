@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Online.Vote.Domain", "Online.Vote.Domain\Online.Vote.Domain.csproj", "{8BDED372-CE9E-4867-BE3F-092D2A9BBD94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Online.Vote.Server", "Online.Vote.Server\Online.Vote.Server.csproj", "{AD55C7D0-94A1-4599-90AB-44756EC51F1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Online.Vote.Component", "Online.Vote.Component\Online.Vote.Component.csproj", "{528365A4-3D35-4901-BF04-FFE6596080B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Online.Vote.Core", "Online.Vote.Core\Online.Vote.Core.csproj", "{05298462-3D4E-492C-800D-F80519C5DFFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Online.Vote.Manager", "Online.Vote.Manager\Online.Vote.Manager.csproj", "{080344D1-B29A-4B4B-9ACE-DE325C468692}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Online.Vote.Web", "Online.Vote.Web\Online.Vote.Web.csproj", "{76E82B18-9169-4C43-9185-892B78286BAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Online.Vote.Web.Test", "Online.Vote.Web.Test\Online.Vote.Web.Test.csproj", "{BADCFC46-CABF-45E9-89FE-CA0B9AD5FB5D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8BDED372-CE9E-4867-BE3F-092D2A9BBD94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BDED372-CE9E-4867-BE3F-092D2A9BBD94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BDED372-CE9E-4867-BE3F-092D2A9BBD94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BDED372-CE9E-4867-BE3F-092D2A9BBD94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD55C7D0-94A1-4599-90AB-44756EC51F1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD55C7D0-94A1-4599-90AB-44756EC51F1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD55C7D0-94A1-4599-90AB-44756EC51F1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD55C7D0-94A1-4599-90AB-44756EC51F1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{528365A4-3D35-4901-BF04-FFE6596080B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{528365A4-3D35-4901-BF04-FFE6596080B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{528365A4-3D35-4901-BF04-FFE6596080B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{528365A4-3D35-4901-BF04-FFE6596080B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05298462-3D4E-492C-800D-F80519C5DFFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05298462-3D4E-492C-800D-F80519C5DFFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05298462-3D4E-492C-800D-F80519C5DFFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05298462-3D4E-492C-800D-F80519C5DFFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{080344D1-B29A-4B4B-9ACE-DE325C468692}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{080344D1-B29A-4B4B-9ACE-DE325C468692}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{080344D1-B29A-4B4B-9ACE-DE325C468692}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{080344D1-B29A-4B4B-9ACE-DE325C468692}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76E82B18-9169-4C43-9185-892B78286BAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76E82B18-9169-4C43-9185-892B78286BAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76E82B18-9169-4C43-9185-892B78286BAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76E82B18-9169-4C43-9185-892B78286BAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BADCFC46-CABF-45E9-89FE-CA0B9AD5FB5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BADCFC46-CABF-45E9-89FE-CA0B9AD5FB5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BADCFC46-CABF-45E9-89FE-CA0B9AD5FB5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BADCFC46-CABF-45E9-89FE-CA0B9AD5FB5D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
