@@ -3,4 +3,5 @@
   <element Id="IUsersService" Service="Online.Vote.Service.IUsersService,Online.Vote.Service" Class="Online.Vote.Component.UsersComponent,Online.Vote.Component"></element>
   <element Id="IPlayerService" Service="Online.Vote.Service.IPlayerService,Online.Vote.Service" Class="Online.Vote.Component.PlayerComponent,Online.Vote.Component"></element>
   <element Id="IMatchPKInfoService" Service="Online.Vote.Service.IMatchPKInfoService,Online.Vote.Service" Class="Online.Vote.Component.MatchPKInfoComponent,Online.Vote.Component"></element>
+  <element Id="IMatchService" Service="Online.Vote.Service.IMatchService,Online.Vote.Service" Class="Online.Vote.Component.MatchComponent,Online.Vote.Component"></element>
 </root>

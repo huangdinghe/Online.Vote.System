@@ -42,9 +42,7 @@ namespace Online.Vote.Domain
         /// <summary>
         /// 场次时间
         /// </summary>
-        [Property(NotNull = true, Length = 20)]
-        [Required(ErrorMessage = "不能为空")]
-        [StringLength(20, ErrorMessage = "不能超过20个字符")]
+
         [Display(Name = "场次时间")]
         public virtual DateTime MatchTime { get; set; }
 
