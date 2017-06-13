@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using NHibernate.Criterion;
-using Online.Vote.Server;
 using Online.Vote.Domain;
 using Online.Vote.Manager;
+using Online.Vote.Service;
 
 namespace Online.Vote.Component
 {

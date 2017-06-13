@@ -39,9 +39,5 @@ namespace Online.Vote.Domain
         [Display(Name = "选手照片")]
         public virtual string PlayerImage { get; set; }
 
-      
-
-
-
     }
 }

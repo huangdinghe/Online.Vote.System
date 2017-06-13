@@ -6,7 +6,7 @@ using NHibernate.Criterion;
 using Online.Vote.Domain;
 using Online.Vote.Manager;
 
-namespace Online.Vote.Server
+namespace Online.Vote.Service
 {
     public interface IBaseService<T> where T : EntityBase, new() //约束条件：T只能是继承自EntityBase的实体
     {

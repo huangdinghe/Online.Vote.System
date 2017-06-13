@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Online.Vote.Domain", "Online.Vote.Domain\Online.Vote.Domain.csproj", "{8BDED372-CE9E-4867-BE3F-092D2A9BBD94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Online.Vote.Server", "Online.Vote.Server\Online.Vote.Server.csproj", "{AD55C7D0-94A1-4599-90AB-44756EC51F1B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Online.Vote.Service", "Online.Vote.Server\Online.Vote.Service.csproj", "{AD55C7D0-94A1-4599-90AB-44756EC51F1B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Online.Vote.Component", "Online.Vote.Component\Online.Vote.Component.csproj", "{528365A4-3D35-4901-BF04-FFE6596080B5}"
 EndProject

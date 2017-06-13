@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using NHibernate.Criterion;
 using Online.Vote.Domain;
-using Online.Vote.Server;
+using Online.Vote.Service;
 
-namespace Online.Vote.Server
+namespace Online.Vote.Service
 {
     public interface IUsersService : IBaseService<Users>
     {

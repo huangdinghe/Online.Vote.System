@@ -7,11 +7,11 @@ using Castle.Services.Transaction;
 using Castle.ActiveRecord.Queries;
 using Online.Vote.Domain;
 using Online.Vote.Manager;
-using Online.Vote.Server;
+using Online.Vote.Service;
 
 namespace Online.Vote.Component
 {
-    public class UserComponent : BaseComponent<Users, UsersManager>, IUsersService
+    public class UsersComponent : BaseComponent<Users, UsersManager>, IUsersService
     {
     
     }

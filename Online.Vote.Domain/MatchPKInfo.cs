@@ -55,9 +55,9 @@ namespace Online.Vote.Domain
         /// <summary>
         /// 选手照片
         /// </summary>
-        [Property(NotNull = true, Length = 20)]
+        [Property(NotNull = true, Length = 200)]
         [Required(ErrorMessage = "不能为空")]
-        [StringLength(20, ErrorMessage = "不能超过20个字符")]
+        [StringLength(200, ErrorMessage = "不能超过200个字符")]
         [Display(Name = "选手照片")]
         public virtual string PlayerImage { get; set; }
 
@@ -81,7 +81,7 @@ namespace Online.Vote.Domain
         /// <summary>
         /// 场次状态
         /// </summary>
-        public short Flag { get; set; }
+        public short MatchFlag { get; set; }
 
      
     }
