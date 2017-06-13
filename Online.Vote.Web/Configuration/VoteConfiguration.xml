@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <element Id="IUsersService" Service="Online.Vote.Server.IUsersService, Online.Vote.Server" Class="Online.Vote.Component.UsersComponent, Online.Vote.Component"></element>
+</root>
