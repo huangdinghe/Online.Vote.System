@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Online.Vote.Domain.Player>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row" style="padding: 180px 0;">
+            <div class="col-lg-2" style="float: left ;text-align: center;font-size: 16px;font-weight: bold;">
+                <img src="Img/头像.jpg" class="img-responsive img-circle" />
+                NO.1-张三
+            </div>
+            <div class="col-md-8" style="float: left;margin: 50px 0;">
+                <img src="Img/VS.jpg" class="img-responsive" style="margin: auto">
+            </div>
+
+            <div class="col-lg-2" style="float: right;text-align: center;font-size: 16px;font-weight: bold;">
+                <img src="Img/头像.jpg" class="img-responsive img-circle" />
+                NO.2-李四
+            </div>
+
+        </div>
+    </div>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PlayerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlayerNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlayerImage)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlayerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlayerNo)
+            </td>
+            <td>
+
+                @Html.DisplayFor(modelItem => item.PlayerImage)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

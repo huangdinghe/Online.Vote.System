@@ -23,13 +23,13 @@ namespace Online.Vote.Domain
         /// <summary>
         /// FirstPlayerId 外键映射
         /// </summary>
-        [BelongsTo("PlayerId")]
+        [BelongsTo("ID")]
         public Player FirstPlayerId{ get; set; }
 
         /// <summary>
         /// SecondPlayerId 外键映射
         /// </summary>
-        [BelongsTo("PlayerId")]
+        [BelongsTo("ID")]
         public Player SecondPlayerId { get; set; }
 
         /// <summary>
@@ -50,16 +50,6 @@ namespace Online.Vote.Domain
         [Display(Name = "SecondSongName")]
         public virtual string SecondSongName { get; set; }
 
-
-
-        /// <summary>
-        /// 选手照片
-        /// </summary>
-        [Property(NotNull = true, Length = 200)]
-        [Required(ErrorMessage = "不能为空")]
-        [StringLength(200, ErrorMessage = "不能超过200个字符")]
-        [Display(Name = "选手照片")]
-        public virtual string PlayerImage { get; set; }
 
         /// <summary>
         /// 选手1 分数

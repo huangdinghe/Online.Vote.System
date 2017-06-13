@@ -87,6 +87,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseComponent.cs" />
+    <Compile Include="MatchPKInfoComponent.cs" />
+    <Compile Include="PlayerComponent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsersComponent.cs" />
   </ItemGroup>
