@@ -54,18 +54,17 @@ namespace Online.Vote.Domain
         /// <summary>
         /// 选手1 分数
         /// </summary>
-        [Property(NotNull = true)]
-        [Required(ErrorMessage = "不能为空")]
-        [Display(Name = "选手1分数")]
+        //[Property(NotNull = true)]
+        //[Required(ErrorMessage = "不能为空")]
+        //[Display(Name = "选手1分数")]
         public virtual decimal FirstPlayerScore { get; set; }
 
         /// <summary>
         /// 选手2 分数
         /// </summary>
-        [Property(NotNull = true, Length = 20)]
-        [Required(ErrorMessage = "不能为空")]
-        [StringLength(20, ErrorMessage = "不能超过20个字符")]
-        [Display(Name = "选手2分数")]
+        //[Required(ErrorMessage = "不能为空")]
+        //[StringLength(20, ErrorMessage = "不能超过20个字符")]
+        //[Display(Name = "选手2分数")]
         public virtual decimal SecondPlayerScore { get; set; }
         
         /// <summary>

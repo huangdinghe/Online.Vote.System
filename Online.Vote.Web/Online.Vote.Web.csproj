@@ -201,6 +201,10 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Content Include="Content\css\bootstrap.min.css" />
+    <EmbeddedResource Include="Content\Img\bg.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <Content Include="Content\Img\bg.mp4" />
     <Content Include="Content\Img\pk.jpg" />
     <Content Include="Content\Img\timg.jpg" />
     <Content Include="Content\Img\VS.jpg" />
@@ -239,6 +243,7 @@
     <Content Include="Views\Player\Index.cshtml" />
     <Content Include="Views\MatchPKInfo\Index.cshtml" />
     <Content Include="Views\Match\Create.cshtml" />
+    <Content Include="Views\MatchPKInfo\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
