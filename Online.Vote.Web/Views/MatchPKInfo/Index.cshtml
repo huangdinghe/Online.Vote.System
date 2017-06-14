@@ -1,5 +1,5 @@
-﻿@model IEnumerable<Online.Vote.Domain.MatchPKInfo>
-
+﻿@using Online.Vote.Domain;
+@model IList<MatchPKInfo>
 @{
     Layout = null;
 }
@@ -7,169 +7,67 @@
 <!DOCTYPE html>
 
 <html>
-@*<head>
+<head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
-</head>*@
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>比赛详情</title>
-    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background-image: url('../../Content/Img/bg.gif');
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: 100% 100%;
-        }
-
-        .match {
-            padding-top: 250px;
-        }
-
-        .match2 {
-            float: right;
-        }
-
-        .match1 {
-            float: left;
-        }
-
-        .match1, .match2 {
-            text-align: center;
-            font-size: 18px;
-            margin: 30px 0;
-            color: #ffffff;
-            font-weight: bold;
-        }
-    </style>
 </head>
-@*<body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstSongName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SecondSongName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstPlayerScore)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SecondPlayerScore)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MatchFlag)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstSongName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SecondSongName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstPlayerScore)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SecondPlayerScore)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MatchFlag)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-            </td>
-        </tr>
-    }
-    
-    </table>
-</body>*@
 <body>
-    <div class="container match">
-        <div class="row">
-            <div class="col-lg-2 match1">
-                <img src="~/Content/Img/头像.jpg" class="img-responsive img-circle" />
-                NO.1-张三
-            </div>
-            <div class="col-lg-2 match2">
-                <img src="~/Content/Img/头像.jpg" class="img-responsive img-circle" />
-                NO.2-李四
-            </div>
-        </div>
+    <div>
+        <h3>安排场次</h3>
+        @using (Html.BeginForm())
+        {
+            <p>
+                <span>场次名称：</span><input type="text" name="name1" id="addMatch" />
+            </p>
+            <p>
+                <span>选手1：</span>@Html.DropDownList("playerID", new SelectList(ViewBag.player, "ID", "PlayerName"), "请选择")
+            </p>
+            <p>
+                <span>选手2：</span>@Html.DropDownList("playerID", new SelectList( ViewBag.player, "ID", "PlayerName"), "请选择")
+            </p>
+            <input type="submit" value="添加" name="name2" id="btn1" />
+        }
+        <h3>场次</h3>
+        <table>
+            <tr>
+                <th>场次</th>
+                <th>第一位选手姓名</th>
+                <th>第一位选手票数</th>
+                <th>第二位选手姓名</th>
+                <th>第二位选手票数</th>
+                <th>状态</th>
+            </tr>
+            @if (Model == null || Model.Count() == 0)
+            {
+                <tr><td colspan="7">没有满足条件的数据！</td></tr>
+            }
+            else
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.ID)</td>
+                        <td>@Html.DisplayFor(modelItem => item.MatchId.MatchName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.FirstPlayerId.PlayerName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.SecondPlayerId.PlayerName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.SecondPlayerScore)</td>
+                        <td>@Html.DisplayFor(modelItem => item.FirstPlayerScore)</td>
+                        <td><input type="button" id="btn2" value="关闭" flag="0" /> </td>
+                    </tr>
+                }
+            }
+        </table>
     </div>
+    <script type="text/javascript">
+   $("#btn2").click(function(){
+       var flag = $(this).attr("flag");
+       switch(flag)
+       {
+           case "0" : $("#btn2").val("开启"); flag = "1";break;
+           case "1" : $("#btn2").val("关闭"); flag = "0";
+       }
+       $(this).attr("flag",flag);//给标记属性重新赋值
+   });
+    </script>
 </body>
 </html>
-
-@*<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>比赛详情</title>
-    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background-image: url("~/Content/Img/bg.gif");
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: 100% 100%;
-        }
-
-        .match {
-            padding-top: 250px;
-        }
-
-        .match2 {
-            float: right;
-        }
-
-        .match1 {
-            float: left;
-        }
-
-        .match1, .match2 {
-            text-align: center;
-            font-size: 18px;
-            margin: 30px 0;
-            color: #ffffff;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
-    <div class="container match">
-        <div class="row">
-            <div class="col-lg-2 match1">
-                <img src="~/Content/Img/头像.jpg" class="img-responsive img-circle" />
-                NO.1-张三
-            </div>
-            <div class="col-lg-2 match2">
-                <img src="~/Content/Img/头像.jpg" class="img-responsive img-circle" />
-                NO.2-李四
-            </div>
-        </div>
-    </div>
-</body>
-</html>*@

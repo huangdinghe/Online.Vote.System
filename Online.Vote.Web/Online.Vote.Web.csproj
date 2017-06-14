@@ -241,9 +241,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Player\Index.cshtml" />
-    <Content Include="Views\MatchPKInfo\Index.cshtml" />
     <Content Include="Views\Match\Create.cshtml" />
-    <Content Include="Views\MatchPKInfo\Create.cshtml" />
+    <Content Include="Views\MatchPKInfo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

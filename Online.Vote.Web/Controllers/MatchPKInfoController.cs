@@ -13,23 +13,16 @@ namespace Online.Vote.Web.Controllers
     {
         // GET: MatchPKInfo
         public ActionResult Index()
-        {
-            //查询为开启状态的PK表
-            IList<MatchPKInfo> matchpkinfos = Container.Instance.Resolve<IMatchPKInfoService>().GetAll().Where(m => m.MatchFlag == 1).ToList();
-            return View(matchpkinfos);
-
+        {          
+            //获取场次信息
+            ViewBag.match = Container.Instance.Resolve<IMatchService>().GetAll();
+            //获取选手信息
+            ViewBag.player = Container.Instance.Resolve<IPlayerService>().GetAll();
             
-        }
-        [HttpGet]
-        public ActionResult Create()
-        {
             return View();
+
+
         }
-        [HttpPost]
-        public ActionResult Create(MatchPKInfo matchinfo)
-        {
-            Container.Instance.Resolve<IMatchPKInfoService>().Create(matchinfo);
-            return View(matchinfo);
-        }
+       
     }
 }

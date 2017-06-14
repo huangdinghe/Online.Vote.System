@@ -30,6 +30,7 @@ namespace Online.Vote.Domain
         [Property(NotNull = true, Length = 50)]
         [Display(Name = "密码")]
         public virtual string Password { get; set; }
+        public virtual short UsersType { get; set; }
 
     }
 }

@@ -18,19 +18,19 @@ namespace Online.Vote.Domain
         /// MatchId 外键映射 外键映射用BelongTo
         /// </summary>
         [BelongsTo("MatchId")]
-        public Match MatchId { get; set; }
+        public virtual Match MatchId { get; set; }
 
         /// <summary>
         /// FirstPlayerId 外键映射
         /// </summary>
         [BelongsTo("ID")]
-        public Player FirstPlayerId{ get; set; }
+        public virtual Player FirstPlayerId{ get; set; }
 
         /// <summary>
         /// SecondPlayerId 外键映射
         /// </summary>
         [BelongsTo("ID")]
-        public Player SecondPlayerId { get; set; }
+        public virtual Player SecondPlayerId { get; set; }
 
         /// <summary>
         /// FirstSongName
