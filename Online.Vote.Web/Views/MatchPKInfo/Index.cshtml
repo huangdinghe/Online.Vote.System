@@ -9,6 +9,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
     <title>Index</title>
 </head>
 <body>
@@ -17,15 +18,16 @@
         @using (Html.BeginForm())
         {
             <p>
-                <span>场次名称：</span><input type="text" name="name1" id="addMatch" />
+                <span>场次名称：</span>@Html.DropDownList("matchId", new SelectList(ViewBag.match, "ID", "MatchName"), "请选择")
             </p>
             <p>
-                <span>选手1：</span>@Html.DropDownList("playerID", new SelectList(ViewBag.player, "ID", "PlayerName"), "请选择")
+                <span>选手1：</span>@Html.DropDownList("player1Id", new SelectList(ViewBag.player, "ID", "PlayerName"), "请选择")
             </p>
             <p>
-                <span>选手2：</span>@Html.DropDownList("playerID", new SelectList( ViewBag.player, "ID", "PlayerName"), "请选择")
+                <span>选手2：</span>@Html.DropDownList("player2Id", new SelectList( ViewBag.player, "ID", "PlayerName"), "请选择")
             </p>
-            <input type="submit" value="添加" name="name2" id="btn1" />
+
+            <input type="button" value="添加" name="name2" id="btn1" />
         }
         <h3>场次</h3>
         <table>
@@ -46,19 +48,37 @@
                 foreach (var item in Model)
                 {
                     <tr>
-                        <td>@Html.DisplayFor(modelItem => item.ID)</td>
-                        <td>@Html.DisplayFor(modelItem => item.MatchId.MatchName)</td>
+                        @*<td>@Html.DisplayFor(modelItem => item.ID)</td>*@
+                        <td>@Html.DisplayFor(modelItem => item.MatchId.MatchName)</td>                       
                         <td>@Html.DisplayFor(modelItem => item.FirstPlayerId.PlayerName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.FirstPlayerScore)</td>
                         <td>@Html.DisplayFor(modelItem => item.SecondPlayerId.PlayerName)</td>
                         <td>@Html.DisplayFor(modelItem => item.SecondPlayerScore)</td>
-                        <td>@Html.DisplayFor(modelItem => item.FirstPlayerScore)</td>
+                        
                         <td><input type="button" id="btn2" value="关闭" flag="0" /> </td>
                     </tr>
                 }
             }
         </table>
     </div>
+
     <script type="text/javascript">
+        //保存操作
+        $("#btn1").click(function () {
+            //post 方式
+            $.post("/MatchPKInfo/Create",
+                {
+                    matchId: $("matchId").val(),
+                    player1Id: $("player1Id").val(),
+                    player2Id: $("player2Id").val()
+
+                },
+                function (result) {
+                    //请求成功的操作           
+            }, "json");
+            
+        });
+        //状态切换操作
    $("#btn2").click(function(){
        var flag = $(this).attr("flag");
        switch(flag)

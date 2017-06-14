@@ -17,19 +17,19 @@ namespace Online.Vote.Domain
         /// <summary>
         /// MatchId 外键映射 外键映射用BelongTo
         /// </summary>
-        [BelongsTo("MatchId")]
+        [BelongsTo(Type = typeof(Match), Column = "ID")]
         public virtual Match MatchId { get; set; }
 
         /// <summary>
         /// FirstPlayerId 外键映射
         /// </summary>
-        [BelongsTo("ID")]
+        [BelongsTo(Type = typeof(Player), Column = "ID")]
         public virtual Player FirstPlayerId{ get; set; }
 
         /// <summary>
         /// SecondPlayerId 外键映射
         /// </summary>
-        [BelongsTo("ID")]
+        [BelongsTo(Type = typeof(Player), Column = "ID")]
         public virtual Player SecondPlayerId { get; set; }
 
         /// <summary>
@@ -54,18 +54,20 @@ namespace Online.Vote.Domain
         /// <summary>
         /// 选手1 分数
         /// </summary>
-        //[Property(NotNull = true)]
-        //[Required(ErrorMessage = "不能为空")]
-        //[Display(Name = "选手1分数")]
-        public virtual decimal FirstPlayerScore { get; set; }
+
+        [Property(NotNull = true)]
+        [StringLength(20, ErrorMessage = "长度为20")]
+        [Display(Name = "第一个选手的票数")]
+        public virtual string FirstPlayerScore { get; set; }
 
         /// <summary>
         /// 选手2 分数
         /// </summary>
-        //[Required(ErrorMessage = "不能为空")]
-        //[StringLength(20, ErrorMessage = "不能超过20个字符")]
-        //[Display(Name = "选手2分数")]
-        public virtual decimal SecondPlayerScore { get; set; }
+
+        [Property(NotNull = true)]
+        [StringLength(20, ErrorMessage = "长度为20")]
+        [Display(Name = "第一个选手的票数")]
+        public virtual string SecondPlayerScore { get; set; }
         
         /// <summary>
         /// 场次状态
