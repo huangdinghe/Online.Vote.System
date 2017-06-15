@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>比赛结果</title>
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+    <link href="Content/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-image: url('Content/Img/bg.gif');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+        .imgvs{
+            float: right;
+            margin-right: 600px;
+        }
+        span{
+            display: block;
+            color: white;
+            margin-top: 10px;
+            margin-left:80px;
+        }
+        .maxbox1{
+            float: left;
+            margin-left: 10%;
+            margin-top: 10%;
+            width: 200px;
+            height:800px;
+        }
+        .maxbox2{
+            float:right;
+            margin-right:10%;
+            margin-top:2%;
+            width: 200px;
+            height:800px;
+        }
+        .box1{
+            float: left;
+            font-size: 45px;
+            color:white;
+            margin-top: 30px;
+            margin-left:50px;
+        }
+        .box2{
+            float: right;
+            font-size: 45px;
+            color:white;
+            margin-top: 30px;
+            margin-right:50px;
+        }
+
+    </style>
+</head>
+<body >
+<div>
+    <div class="maxbox1">
+    <img id="player1Img" src="Content/Img/头像.jpg" class="img-responsive img-circle">
+        <span id="player1Name">hello</span>
+    <div class="box1"><label id="player1Score">0</label></div>
+    </div>
+
+    <div class="imgvs">
+        <img src="Content/Img/pk.jpg" height="200" width="200" class="img-responsive img-circle"/>
+    </div>
+
+    <div class="maxbox2">
+    <img id="player2Img" src="Content/Img/头像.jpg" class="img-responsive img-circle">
+        <span id="player2Name">humo</span>
+    <div class="box2"><label id="player2Score">0</label></div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(function () {
+            var score1=0;
+            $(".box1").css({"background-color":"yellow","width":"80px","height":score1+"px"})
+            var score2=0;
+            $(".box2").css({"background-color":"red","width":"80px","height":score2+"px"})
+
+            GetResult();
+            setInterval(GetResult(), 1000);
+        });
+
+        function GetResult()
+        {
+            $.get("http://localhost:52136/PK/GetPkInfo", {}, function (rv) {
+               // alert(rv);
+                $("#player1Name").html(rv.FirstPlayersName);
+                $("#player2Name").html(rv.SecondPlayersName);
+                $("#player1Score").html(rv.FirstPlayersScore);
+                $("#player2Score").html(rv.SecondPlayersScore);
+                $("#player1Img").attr("src", rv.FirstPlayersImg);
+                $("#player2Img").attr("src", rv.SecondPlayersImg);
+            })
+        }
+
+   });
+</script>
+
+</body>
+</html>

@@ -18,7 +18,7 @@ namespace Online.Vote.Web.Controllers
             MatchPKInfo mPlayer = null;
 
             IList<ICriterion> queryConditions = new List<ICriterion>();
-            queryConditions.Add(Expression.Eq("Flag", true));
+            queryConditions.Add(Expression.Eq("MatchFlag", 1));
 
             IList<MatchPKInfo> list = Container.Instance.Resolve<IMatchPKInfoService>().Find(queryConditions);
             if (list != null) mPlayer = list[0];
