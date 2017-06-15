@@ -9,11 +9,64 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
     <title>Index</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: url('../../Content/Img/bg.gif');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+
+        .match {
+            padding-top: 250px;
+        }
+
+        .match1:last-of-type {
+            float: right;
+        }
+
+        .match1:first-child {
+            float: left;
+        }
+        
+
+        .match1, .match2 {
+            text-align: center;
+            font-size: 18px;
+            margin: 30px 0;
+            color: #ffffff;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
 
-    <p>
+    <div class="container match">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+               <div class="col-lg-2 match1">
+                <img src="@Html.DisplayFor(modelItem => item.PlayerImage)" class="img-responsive img-circle" />
+                <h4> @Html.DisplayFor(modelItem => item.PlayerName)</h4>
+                <button type="button" class="btn btn-info">投票</button>
+            </div>
+                }
+            @*<div class="col-lg-2 match2">
+                <img src="@Html.DisplayFor(modelItem => item.PlayerImage)" class="img-responsive img-circle" />
+                <h4>@Html.DisplayFor(modelItem => item.PlayerName)</h4>
+                <button type="button" class="btn btn-info">投票</button>
+            </div>*@
+        </div>
+    </div>
+
+    @*<p>
         @Html.ActionLink("Create New", "Create")
     </p>
     <table class="table">
@@ -50,6 +103,6 @@
         </tr>
     }
     
-    </table>
+    </table>*@
 </body>
 </html>

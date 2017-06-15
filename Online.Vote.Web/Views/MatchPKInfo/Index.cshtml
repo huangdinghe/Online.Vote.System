@@ -15,8 +15,8 @@
 <body>
     <div>
         <h3>安排场次</h3>
-        @using (Html.BeginForm())
-        {
+        @{
+            var MatchFlag= "";
             <p>
                 <span>场次名称：</span>@Html.DropDownList("matchId", new SelectList(ViewBag.match, "ID", "MatchName"), "请选择")
             </p>
@@ -24,13 +24,19 @@
                 <span>选手1：</span>@Html.DropDownList("player1Id", new SelectList(ViewBag.player, "ID", "PlayerName"), "请选择")
             </p>
             <p>
+                <span>选手1歌曲名：</span><input type="text" name="firstplayersong" id="firstplayersong" />
+            </p>
+            <p>
                 <span>选手2：</span>@Html.DropDownList("player2Id", new SelectList( ViewBag.player, "ID", "PlayerName"), "请选择")
+            </p>
+            <p>
+                <span>选手2歌曲名：</span><input type="text" name="secondplayersong" id="secondplayersong" />
             </p>
 
             <input type="button" value="添加" name="name2" id="btn1" />
         }
         <h3>场次</h3>
-        <table>
+        <table id="tabRow">
             <tr>
                 <th>场次</th>
                 <th>第一位选手姓名</th>
@@ -54,6 +60,19 @@
                         <td>@Html.DisplayFor(modelItem => item.FirstPlayerScore)</td>
                         <td>@Html.DisplayFor(modelItem => item.SecondPlayerId.PlayerName)</td>
                         <td>@Html.DisplayFor(modelItem => item.SecondPlayerScore)</td>
+                        @switch (item.MatchFlag)
+                        {
+                            case 1:
+                                MatchFlag= "开始";
+                                break;
+                            case 2:
+                                MatchFlag = "关闭";
+                                break;
+                            case 3:
+                                MatchFlag= "未开始";
+                                break;
+                        }
+                        <td>@MatchFlag</td>
                         
                         <td><input type="button" id="btn2" value="关闭" flag="0" /> </td>
                     </tr>
@@ -68,23 +87,65 @@
             //post 方式
             $.post("/MatchPKInfo/Create",
                 {
-                    matchId: $("matchId").val(),
-                    player1Id: $("player1Id").val(),
-                    player2Id: $("player2Id").val()
-
+                    "matchId": $("#matchId").val(),
+                   "player1Id": $("#player1Id").val(),
+                   "player2Id": $("#player2Id").val(),
+                   "firstplayersong": $("#firstplayersong").val(),
+                   "secondplayersong": $("#secondplayersong").val()
                 },
                 function (result) {
-                    //请求成功的操作           
+                   // alert("hello");
+                    AppendTr(rv);      
             }, "json");
             
         });
+
+        function AppendTr(rv) {
+
+            //清空
+            $("#tabRow tr:gt(0)").remove();
+
+            if (rv.length == 0) {
+                $("#tabRow").append("<tr><td colspan=\"10\">没有满足条件的数据！</td> </tr>");
+                return;
+            }
+
+            //循环添加
+            $.each(rv, function (index, item) {
+                //组织状态
+                var sString = "";
+                if (item.MatchFlag == "3") sString = "<input type='button' value='开始' onclick='SetStatus(2)'>";
+                else if (item.MatchFlag == "2") sString = "<input type='button' value='进行中' onclick='SetStatus(1)'>";
+                else sString = "over";
+                var trHtml = "<tr>" +
+                    "<td>" + item.Matchs.ID + "</td>" +
+                    "<td>" + item.FirstPlayer.PlayerName + "</td>" +
+                    "<td>" + item.FirstSongName + "</td>" +
+                    "<td>" + item.SecondPlayer.PlayerName + "</td>" +
+                    "<td>" + item.SecondSongName + "</td>" +
+                    "<td>" + item.FirstPlayerScore + "</td>" +
+                    "<td>" + item.SecondPlayerScore + "</td>" +
+                    "<td>" + sString + "</td>" +
+                    "</tr>"
+                $("#tabRow").append(trHtml);
+            });
+        }
+
+       //set status
+        function SetStatus(status) {
+            $.get("/MatchPKInfo/SetStatus", { "flag": status }, function (rv) {
+                AppendTr(rv);
+            });
+        }
+
         //状态切换操作
    $("#btn2").click(function(){
        var flag = $(this).attr("flag");
        switch(flag)
        {
            case "0" : $("#btn2").val("开启"); flag = "1";break;
-           case "1" : $("#btn2").val("关闭"); flag = "0";
+           case "1": $("#btn2").val("关闭"); flag = "0";
+                            
        }
        $(this).attr("flag",flag);//给标记属性重新赋值
    });

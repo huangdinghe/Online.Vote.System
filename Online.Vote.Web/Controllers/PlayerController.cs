@@ -17,5 +17,9 @@ namespace Online.Vote.Web.Controllers
             IList<Player> players = Container.Instance.Resolve<IPlayerService>().GetAll();
             return View(players);
         }
+        public ActionResult AddScore()
+        {
+            return View();
+        }
     }
 }

@@ -17,26 +17,24 @@ namespace Online.Vote.Domain
         /// <summary>
         /// MatchId 外键映射 外键映射用BelongTo
         /// </summary>
-        [BelongsTo(Type = typeof(Match), Column = "ID")]
+        [BelongsTo(Type = typeof(Match), Column = " MatchId")]
         public virtual Match MatchId { get; set; }
 
         /// <summary>
         /// FirstPlayerId 外键映射
         /// </summary>
-        [BelongsTo(Type = typeof(Player), Column = "ID")]
+        [BelongsTo(Type = typeof(Player), Column = "FirstPlayerId")]
         public virtual Player FirstPlayerId{ get; set; }
 
         /// <summary>
         /// SecondPlayerId 外键映射
         /// </summary>
-        [BelongsTo(Type = typeof(Player), Column = "ID")]
+        [BelongsTo(Type = typeof(Player), Column = "SecondPlayerId")]
         public virtual Player SecondPlayerId { get; set; }
 
         /// <summary>
         /// FirstSongName
         /// </summary>
-        [Property(NotNull = true, Length = 20)]
-        [Required(ErrorMessage = "不能为空")]
         [StringLength(20, ErrorMessage = "不能超过20个字符")]
         [Display(Name = "FirstSongName")]
         public virtual string FirstSongName { get; set; }
@@ -44,9 +42,8 @@ namespace Online.Vote.Domain
         /// <summary>
         /// SecondSongName
         /// </summary>
-        [Property(NotNull = true, Length = 20)]
-        [Required(ErrorMessage = "不能为空")]
         [StringLength(20, ErrorMessage = "不能超过20个字符")]
+        [Property]
         [Display(Name = "SecondSongName")]
         public virtual string SecondSongName { get; set; }
 
@@ -54,25 +51,23 @@ namespace Online.Vote.Domain
         /// <summary>
         /// 选手1 分数
         /// </summary>
-
-        [Property(NotNull = true)]
-        [StringLength(20, ErrorMessage = "长度为20")]
-        [Display(Name = "第一个选手的票数")]
-        public virtual string FirstPlayerScore { get; set; }
+        
+         [Property]
+        public virtual decimal FirstPlayerScore { get; set; }
 
         /// <summary>
         /// 选手2 分数
         /// </summary>
-
-        [Property(NotNull = true)]
-        [StringLength(20, ErrorMessage = "长度为20")]
-        [Display(Name = "第一个选手的票数")]
-        public virtual string SecondPlayerScore { get; set; }
+        
+        [Property]
+        public virtual decimal SecondPlayerScore { get; set; }
         
         /// <summary>
         /// 场次状态
         /// </summary>
-        public short MatchFlag { get; set; }
+        
+         [Property]
+        public int MatchFlag { get; set; }
 
      
     }
