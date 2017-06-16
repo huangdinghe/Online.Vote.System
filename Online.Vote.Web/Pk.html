@@ -82,15 +82,14 @@
             $(".box1").css({"background-color":"yellow","width":"80px","height":score1+"px"})
             var score2=0;
             $(".box2").css({"background-color":"red","width":"80px","height":score2+"px"})
-
-            GetResult();
-            setInterval(GetResult(), 1000);
+            GetResult();               
         });
 
-        function GetResult()
-        {
+        //指定1000定时刷新
+        window.setInterval(function GetResult() {
+           // alert("11");
             $.get("http://localhost:52136/PK/GetPkInfo", {}, function (rv) {
-               // alert(rv);
+                // alert(rv);
                 $("#player1Name").html(rv.FirstPlayersName);
                 $("#player2Name").html(rv.SecondPlayersName);
                 $("#player1Score").html(rv.FirstPlayersScore);
@@ -98,8 +97,8 @@
                 $("#player1Img").attr("src", rv.FirstPlayersImg);
                 $("#player2Img").attr("src", rv.SecondPlayersImg);
             })
-        }
-
+        },500);
+       
    });
 </script>
 
