@@ -32,7 +32,7 @@ namespace Online.Vote.Domain
         public virtual string Password { get; set; }
 
         [Property]
-        public virtual short UsersType { get; set; }
+        public virtual bool IsActive{ get; set; }
 
     }
 }

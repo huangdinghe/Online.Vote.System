@@ -206,6 +206,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <Content Include="Content\css\zui.min.css" />
+    <Content Include="Content\Img\timg2.jpg" />
     <Content Include="Content\Img\bg.mp4" />
     <Content Include="Content\Img\pk.jpg" />
     <Content Include="Content\Img\timg.jpg" />
@@ -244,10 +245,10 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Player\Index.cshtml" />
     <Content Include="Views\Match\Create.cshtml" />
     <Content Include="Views\MatchPKInfo\Index.cshtml" />
+    <Content Include="Views\Users\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

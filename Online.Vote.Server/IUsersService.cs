@@ -10,6 +10,6 @@ namespace Online.Vote.Service
 {
     public interface IUsersService : IBaseService<Users>
     {
-       
+        Users Login(string usersname, string password);
     }
 }

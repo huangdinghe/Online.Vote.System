@@ -1,0 +1,60 @@
+﻿@model Online.Vote.Domain.Users
+@{
+    Layout = null;//不引用布局页
+}
+<html>
+<head>
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: url('../../Content/Img/timg2.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+
+        .match1, .match2 {
+            text-align: center;
+            font-size: 18px;
+            color: #ffffff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div><h3>管理员--登录通道</h3></div>
+        <div class="divMain">
+            <div class="divLoginArea">
+                <div class="divAccount">
+                    <div class="divInput">
+                        @using (Html.BeginForm())
+                        {
+                            <div class="divLoginLine">
+                                <span>用户名：</span>@Html.TextBoxFor(m => m.UsersName, new { maxlength = 10 })<br />
+                            </div><br />
+                            <div class="divLoginLine">
+                                <span>密&nbsp;&nbsp;&nbsp;&nbsp;码：</span>@Html.PasswordFor(m => m.Password)
+                            </div><br />
+                            <div>
+                                <div>
+                                    <input size="50px" type="submit" id="btnLogin" class="btn3" value="登录" />
+                                </div>
+                                <div id="lblError" class="divNotice">
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="divPassword">
+                </div>
+            </div>
+        </div>
+    </center>
+</body>
+</html>
