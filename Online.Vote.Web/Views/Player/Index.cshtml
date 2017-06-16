@@ -10,8 +10,10 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <title>Index</title>
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -50,59 +52,78 @@
 
     <div class="container match">
         <div class="row">
-            @foreach (var item in Model)
-            {
                <div class="col-lg-2 match1">
-                <img src="@Html.DisplayFor(modelItem => item.PlayerImage)" class="img-responsive img-circle" />
-                <h4> @Html.DisplayFor(modelItem => item.PlayerName)</h4>
-                <button type="button" class="btn btn-info">投票</button>
+                <img id="player1Img" src="" class="img-responsive img-circle" />
+                <h4 id="player1Name"> </h4>
+                   @Html.Hidden("screenPlayerID")
+                <input type="button" class="btn btn-info" id="suport1" value="投票" >
+            </div>     
+         
+            <div id="screenPlayerID" ></div>
+            <div class="col-lg-2 match1">
+                <img id="player2Img" src="" class="img-responsive img-circle" />
+                <h4 id="player2Name"> </h4>
+                <input type="button" class="btn btn-info" id="suport2" value="投票">
             </div>
-                }
-            @*<div class="col-lg-2 match2">
-                <img src="@Html.DisplayFor(modelItem => item.PlayerImage)" class="img-responsive img-circle" />
-                <h4>@Html.DisplayFor(modelItem => item.PlayerName)</h4>
-                <button type="button" class="btn btn-info">投票</button>
-            </div>*@
         </div>
     </div>
 
-    @*<p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.PlayerName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PlayerNo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PlayerImage)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.PlayerName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PlayerNo)
-            </td>
-            <td>
+    <script type="text/javascript">
+       $(function () {
+           $.ajax({
+               url: "/PK/GetPkInfo",
+               type: "GET",
+               datatype: "JSON",
+               success: function (rv) {
+                   //用于保存当前的ID 提供给后台通过id查找数据
+                   $("#screenPlayerID").attr('data-screenplayerid', rv.ScreenPlayerID);
 
-                @Html.DisplayFor(modelItem => item.PlayerImage)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-            </td>
-        </tr>
-    }
-    
-    </table>*@
+                   $("#player1Name").html(rv.FirstPlayersName);
+                   $("#player2Name").html(rv.SecondPlayersName);
+
+                   $("#player1Img").attr("src", "../" + rv.FirstPlayersImg);
+                   $("#player2Img").attr("src", "../" + rv.SecondPlayersImg);
+               }
+           });
+        });
+
+
+        $("input[type='button']").click(function () {
+            $("input[type='button']").attr({ "disabled":"disabled"})
+           var temp1 = false, temp2 = false;
+           if ($(this).attr("id") == "suport1")             
+               temp1 = true;
+           if ($(this).attr("id") == "suport2")
+               temp2 = true;
+           
+           $.ajax({
+               type: "POST",
+               url: "/Player/AddScore",
+               datatype: "JSON",
+               data: {
+                   "screenPlayerID": $("#screenPlayerID").attr('data-screenplayerid'),
+                   "suportFirst": temp1,
+                   "suportSecond": temp2
+               },
+               success: function (data) {
+                   if (data == 1) {
+                       alert("投票成功！");
+                       $("button").attr("disabled", true);
+                   }
+                   else {
+                       alert("投票失败！");
+                   }
+
+               },
+               error: function () {
+
+               }
+           });
+          // alert("success");
+
+       });
+
+    </script>
+
 </body>
 </html>

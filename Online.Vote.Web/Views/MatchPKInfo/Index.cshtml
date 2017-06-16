@@ -10,75 +10,99 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <link href="~/Content/css/zui.min.css" rel="stylesheet" />
+    <script src="~/Content/js/zui.min.js"></script>
     <title>Index</title>
+    <style>
+        .mainadd {
+            width:500px;
+            margin-right:500px;
+        }
+    </style>
 </head>
 <body>
     <div>
-        <h3>安排场次</h3>
-        @{
-            var MatchFlag= "";
-            <p>
-                <span>场次名称：</span>@Html.DropDownList("matchId", new SelectList(ViewBag.match, "ID", "MatchName"), "请选择")
-            </p>
-            <p>
-                <span>选手1：</span>@Html.DropDownList("player1Id", new SelectList(ViewBag.player, "ID", "PlayerName"), "请选择")
-            </p>
-            <p>
-                <span>选手1歌曲名：</span><input type="text" name="firstplayersong" id="firstplayersong" />
-            </p>
-            <p>
-                <span>选手2：</span>@Html.DropDownList("player2Id", new SelectList( ViewBag.player, "ID", "PlayerName"), "请选择")
-            </p>
-            <p>
-                <span>选手2歌曲名：</span><input type="text" name="secondplayersong" id="secondplayersong" />
-            </p>
+        <div class="mainadd">
+            <h3>安排场次</h3>
+            @{
+            var MatchFlag = "";
+                <p>
+                    <span>场次名称：</span>@Html.DropDownList("matchId", new SelectList(ViewBag.match, "ID", "MatchName"), "请选择", new { @class = "form-control" })
+                </p>
+                <p>
+                    <span>选手1：</span>@Html.DropDownList("player1Id", new SelectList(ViewBag.player, "ID", "PlayerName"), "请选择", new { @class = "form-control" })
+                </p>
+                <p>
+                    <span>选手1歌曲名：</span><input type="text" name="firstplayersong" id="firstplayersong" class="form-control" />
+                </p>
+                <p>
+                    <span>选手2：</span>@Html.DropDownList("player2Id", new SelectList(ViewBag.player, "ID", "PlayerName"), "请选择", new { @class = "form-control" })
+                </p>
+                <p>
+                    <span>选手2歌曲名：</span><input type="text" name="secondplayersong" id="secondplayersong" class="form-control" />
+                </p>
 
-            <input type="button" value="添加" name="name2" id="btn1" />
-        }
+                <input type="button" value="添加" name="name2" id="btn1" class="btn btn-info " />
+            }
+        </div>
         <h3>场次</h3>
-        <table id="tabRow">
-            <tr>
-                <th>场次</th>
-                <th>第一位选手姓名</th>
-                <th>第一位选手票数</th>
-                <th>第二位选手姓名</th>
-                <th>第二位选手票数</th>
-                <th>状态</th>
-            </tr>
-            @if (Model == null || Model.Count() == 0)
+        <table id="tabRow" class="table table-hover">
+            <thead>
+                <tr>
+                    <th>场次</th>
+                    <th>第一位选手姓名</th>
+                    <th>第一位选手票数</th>
+                    <th>第二位选手姓名</th>
+                    <th>第二位选手票数</th>
+                    <th>状态</th>
+                </tr>
+                </thead>
+
+            <tbody>
+                @if (Model == null || Model.Count() == 0)
             {
-                <tr><td colspan="7">没有满足条件的数据！</td></tr>
-            }
-            else
-            {
-                foreach (var item in Model)
-                {
-                    <tr>
-                        @*<td>@Html.DisplayFor(modelItem => item.ID)</td>*@
-                        <td>@Html.DisplayFor(modelItem => item.MatchId.MatchName)</td>                       
-                        <td>@Html.DisplayFor(modelItem => item.FirstPlayerId.PlayerName)</td>
-                        <td>@Html.DisplayFor(modelItem => item.FirstPlayerScore)</td>
-                        <td>@Html.DisplayFor(modelItem => item.SecondPlayerId.PlayerName)</td>
-                        <td>@Html.DisplayFor(modelItem => item.SecondPlayerScore)</td>
-                        @switch (item.MatchFlag)
-                        {
-                            case 1:
-                                MatchFlag= "开始";
-                                break;
-                            case 2:
-                                MatchFlag = "关闭";
-                                break;
-                            case 3:
-                                MatchFlag= "未开始";
-                                break;
-                        }
-                        <td>@MatchFlag</td>
-                        
-                        <td><input type="button" id="btn2" value="关闭" flag="0" /> </td>
-                    </tr>
+                    <tr><td colspan="7">没有满足条件的数据！</td></tr>
                 }
-            }
-        </table>
+                else
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            @*<td>@Html.DisplayFor(modelItem => item.ID)</td>*@
+                            <td>@Html.DisplayFor(modelItem => item.MatchId.MatchName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.FirstPlayerId.PlayerName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.FirstPlayerScore)</td>
+                            <td>@Html.DisplayFor(modelItem => item.SecondPlayerId.PlayerName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.SecondPlayerScore)</td>
+                            @switch (item.MatchFlag)
+                            {
+                                case 1:
+                                    MatchFlag = "开始";
+                                    break;
+                                case 2:
+                                    MatchFlag = "关闭";
+                                    break;
+                                case 3:
+                                    MatchFlag = "未开始";
+                                    break;
+                            }
+                            @*<td>@MatchFlag</td>*@
+                            <td>
+                                <div class="switch">                                  
+                                    <input type="checkbox" value="0" id="btn2">  
+                                    <label>关闭/开启</label>
+                                </div>
+                            </td>
+                            @*<td>
+                                <div class="switch">
+                                    <input type="checkbox" id="btn2" value="关闭" flag="0" />
+                                </div>
+                            </td>*@
+                            </tr>
+                    }
+                }
+            </tbody>
+</table>
     </div>
 
     <script type="text/javascript">
@@ -114,8 +138,10 @@
             $.each(rv, function (index, item) {
                 //组织状态
                 var sString = "";
-                if (item.MatchFlag == "3") sString = "<input type='button' value='开始' onclick='SetStatus(2)'>";
-                else if (item.MatchFlag == "2") sString = "<input type='button' value='进行中' onclick='SetStatus(1)'>";
+                if (item.MatchFlag == "0")
+                sString = "<input type='button' value='开始' onclick='SetStatus(0)'>";
+                else if (item.MatchFlag == "1")
+                 sString = "<input type='button' value='关闭' onclick='SetStatus(1)'>";
                 else sString = "over";
                 var trHtml = "<tr>" +
                     "<td>" + item.Matchs.ID + "</td>" +
@@ -124,8 +150,7 @@
                     "<td>" + item.SecondPlayer.PlayerName + "</td>" +
                     "<td>" + item.SecondSongName + "</td>" +
                     "<td>" + item.FirstPlayerScore + "</td>" +
-                    "<td>" + item.SecondPlayerScore + "</td>" +
-                    "<td>" + sString + "</td>" +
+                    "<td>" + item.SecondPlayerScore + "</td>"               
                     "</tr>"
                 $("#tabRow").append(trHtml);
             });

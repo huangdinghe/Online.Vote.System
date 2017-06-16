@@ -17,9 +17,41 @@ namespace Online.Vote.Web.Controllers
             IList<Player> players = Container.Instance.Resolve<IPlayerService>().GetAll();
             return View(players);
         }
-        public ActionResult AddScore()
+
+        [HttpPost]
+        public int  AddScore(int screenPlayerID, bool suportFirst, bool suportSecond)
         {
-            return View();
+            MatchPKInfo mpi = Container.Instance.Resolve<IMatchPKInfoService>().Get(screenPlayerID);
+            var list = Container.Instance.Resolve<IMatchPKInfoService>().Get(screenPlayerID);
+            if (list != null)
+            {
+                if (suportFirst == true)
+                {
+                    list.FirstPlayerScore++;
+                }
+                if (suportSecond == true)
+                {
+                    list.SecondPlayerScore++;
+                }
+
+            }
+            else
+            {
+                return 0;
+            }
+            try
+            {
+                Container.Instance.Resolve<IMatchPKInfoService>().Update(list);
+            }
+            catch (Exception)
+            {
+
+                return 0;
+            }
+
+            return 1;
+           
         }
+   
     }
 }

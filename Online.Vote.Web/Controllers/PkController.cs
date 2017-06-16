@@ -25,6 +25,7 @@ namespace Online.Vote.Web.Controllers
 
             return Json(new
             {
+                ScreenPlayerID = mPlayer.ID,
                 FirstPlayersName = mPlayer.FirstPlayerId.PlayerName,
                 SecondPlayersName = mPlayer.SecondPlayerId.PlayerName,
                 FirstPlayersScore = mPlayer.FirstPlayerScore,

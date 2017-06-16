@@ -54,8 +54,8 @@ namespace Online.Vote.Web.Controllers
             IList<MatchPKInfo> list = conmp.GetAll();
             foreach (var item in list)
             {
-                if (item.MatchFlag == 1) continue;
-                if (item.MatchFlag == 2 && item.MatchFlag < flag) continue;
+                if (item.MatchFlag == 0) continue;
+                if (item.MatchFlag == 1 && item.MatchFlag < flag) continue;
                 item.MatchFlag = flag;
 
                 conmp.Update(item);

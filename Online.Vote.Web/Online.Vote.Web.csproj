@@ -205,11 +205,13 @@
     <EmbeddedResource Include="Content\Img\bg.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <Content Include="Content\css\zui.min.css" />
     <Content Include="Content\Img\bg.mp4" />
     <Content Include="Content\Img\pk.jpg" />
     <Content Include="Content\Img\timg.jpg" />
     <Content Include="Content\Img\VS.jpg" />
     <Content Include="Content\Img\头像.jpg" />
+    <Content Include="Content\js\zui.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -231,7 +233,6 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="sql_db\dbo.sql" />
-    <Content Include="vote.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
